@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Run hedge fund via Poetry with default tickers
+:: Run hedge fund CLI via uv
 
 if not exist "pyproject.toml" (
     echo [ERROR] pyproject.toml not found. Run this from the project root.
