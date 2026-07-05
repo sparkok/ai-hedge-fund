@@ -3,6 +3,13 @@ setlocal enabledelayedexpansion
 
 :: AI Hedge Fund -- Backend server (uv)
 
+:: Kill leftover process on port 8000 if any
+for /f "tokens=5" %%a in (\'netstat -ano^^ ^| findstr :8000^^\') do (
+    echo [INFO] Killing process %%a on port 8000
+    taskkill /f /pid %%a >nul 2>&1
+    timeout /t 1 /nobreak >nul
+)
+
 if not exist ".env" (
     echo [ERROR] .env file not found in project root
     pause

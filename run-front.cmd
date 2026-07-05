@@ -3,10 +3,9 @@ setlocal enabledelayedexpansion
 
 :: AI Hedge Fund -- Frontend dev server
 
-set FRONTEND_DIR=approntend
+set FRONTEND_DIR=app\frontend
 
-if not exist "%FRONTEND_DIR%
-ode_modules" (
+if not exist "%FRONTEND_DIR%\node_modules" (
     echo [ERROR] node_modules not found.
     echo [INFO] Run: cd %FRONTEND_DIR% ^&^& npm install
     pause
