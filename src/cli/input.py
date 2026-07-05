@@ -71,7 +71,6 @@ def parse_tickers(tickers_arg: str | None) -> list[str]:
         return []
     return [ticker.strip() for ticker in tickers_arg.split(",") if ticker.strip()]
 
-
 def select_analysts(flags: dict | None = None) -> list[str]:
     if flags and flags.get("analysts_all"):
         return [a[1] for a in ANALYST_ORDER]
@@ -79,9 +78,17 @@ def select_analysts(flags: dict | None = None) -> list[str]:
     if flags and flags.get("analysts"):
         return [a.strip() for a in flags["analysts"].split(",") if a.strip()]
 
-    choices = questionary.checkbox(
+    from src.utils.analysts import ANALYST_CONFIG
+    choices = [
+        questionary.Choice(
+            f"{cfg['display_name']} ({cfg.get('chinese_name', '')})",
+            value=key,
+        )
+        for key, cfg in sorted(ANALYST_CONFIG.items(), key=lambda x: x[1]["order"])
+    ]
+    selected = questionary.checkbox(
         "Select your AI analysts.",
-        choices=[questionary.Choice(display, value=value) for display, value in ANALYST_ORDER],
+        choices=choices,
         instruction="\n\nInstructions: \n1. Press Space to select/unselect analysts.\n2. Press 'a' to select/unselect all.\n3. Press Enter when done.",
         validate=lambda x: len(x) > 0 or "You must select at least one analyst.",
         style=questionary.Style(
@@ -94,15 +101,22 @@ def select_analysts(flags: dict | None = None) -> list[str]:
         ),
     ).ask()
 
-    if not choices:
+    if not selected:
         print("\n\nInterrupt received. Exiting...")
         sys.exit(0)
 
     print(
-        f"\nSelected analysts: {', '.join(Fore.GREEN + c.title().replace('_', ' ') + Style.RESET_ALL for c in choices)}\n"
+        f"\nSelected analysts: {', '.join(Fore.GREEN + c.title().replace('_', ' ') + Style.RESET_ALL for c in selected)}\n"
     )
-    return choices
 
+    import webbrowser
+    for key in selected:
+        cfg = ANALYST_CONFIG.get(key)
+        name = cfg["display_name"] if cfg else key
+        url = f"https://www.bing.com/search?q={name}+investor"
+        webbrowser.open(url)
+
+    return selected
 
 def select_model(use_ollama: bool, model_flag: str | None = None) -> tuple[str, str]:
     model_name: str = ""

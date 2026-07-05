@@ -47,10 +47,18 @@ def main() -> int:
     elif args.analysts:
         selected_analysts = [a.strip() for a in args.analysts.split(",") if a.strip()]
     else:
-        # Interactive analyst selection (same as legacy backtester)
-        choices = questionary.checkbox(
+        # Interactive analyst selection
+        from src.utils.analysts import ANALYST_CONFIG
+        choice_items = [
+            questionary.Choice(
+                f"{cfg['display_name']} ({cfg.get('chinese_name', '')})",
+                value=key,
+            )
+            for key, cfg in sorted(ANALYST_CONFIG.items(), key=lambda x: x[1]["order"])
+        ]
+        selected = questionary.checkbox(
             "Use the Space bar to select/unselect analysts.",
-            choices=[questionary.Choice(display, value=value) for display, value in ANALYST_ORDER],
+            choices=choice_items,
             instruction="\n\nPress 'a' to toggle all.\n\nPress Enter when done to run the hedge fund.",
             validate=lambda x: len(x) > 0 or "You must select at least one analyst.",
             style=questionary.Style(
@@ -62,15 +70,21 @@ def main() -> int:
                 ]
             ),
         ).ask()
-        if not choices:
+        if not selected:
             print("\n\nInterrupt received. Exiting...")
             return 1
-        selected_analysts = choices
+        selected_analysts = selected
         print(
             f"\nSelected analysts: "
-            f"{', '.join(Fore.GREEN + choice.title().replace('_', ' ') + Style.RESET_ALL for choice in choices)}\n"
+            f"{', '.join(Fore.GREEN + c.title().replace('_', ' ') + Style.RESET_ALL for c in selected)}\n"
         )
 
+        import webbrowser
+        for key in selected:
+            cfg = ANALYST_CONFIG.get(key)
+            name = cfg["display_name"] if cfg else key
+            url = f"https://www.bing.com/search?q={name}+investor"
+            webbrowser.open(url)
     # Model selection simplified: default to first ordered model or Ollama flag
     if args.ollama:
         print(f"{Fore.CYAN}Using Ollama for local LLM inference.{Style.RESET_ALL}")

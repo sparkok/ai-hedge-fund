@@ -25,6 +25,7 @@ from src.agents.growth_agent import growth_analyst_agent
 ANALYST_CONFIG = {
     "aswath_damodaran": {
         "display_name": "Aswath Damodaran",
+        "chinese_name": "阿斯沃斯·达摩达兰",
         "description": "The Dean of Valuation",
         "investing_style": "Focuses on intrinsic value and financial metrics to assess investment opportunities through rigorous valuation analysis.",
         "agent_func": aswath_damodaran_agent,
@@ -33,6 +34,7 @@ ANALYST_CONFIG = {
     },
     "ben_graham": {
         "display_name": "Ben Graham",
+        "chinese_name": "本杰明·格雷厄姆",
         "description": "The Father of Value Investing",
         "investing_style": "Emphasizes a margin of safety and invests in undervalued companies with strong fundamentals through systematic value analysis.",
         "agent_func": ben_graham_agent,
@@ -41,6 +43,7 @@ ANALYST_CONFIG = {
     },
     "bill_ackman": {
         "display_name": "Bill Ackman",
+        "chinese_name": "比尔·阿克曼",
         "description": "The Activist Investor",
         "investing_style": "Seeks to influence management and unlock value through strategic activism and contrarian investment positions.",
         "agent_func": bill_ackman_agent,
@@ -49,6 +52,7 @@ ANALYST_CONFIG = {
     },
     "cathie_wood": {
         "display_name": "Cathie Wood",
+        "chinese_name": "凯西·伍德",
         "description": "The Queen of Growth Investing",
         "investing_style": "Focuses on disruptive innovation and growth, investing in companies that are leading technological advancements and market disruption.",
         "agent_func": cathie_wood_agent,
@@ -57,6 +61,7 @@ ANALYST_CONFIG = {
     },
     "charlie_munger": {
         "display_name": "Charlie Munger",
+        "chinese_name": "查理·芒格",
         "description": "The Rational Thinker",
         "investing_style": "Advocates for value investing with a focus on quality businesses and long-term growth through rational decision-making.",
         "agent_func": charlie_munger_agent,
@@ -65,6 +70,7 @@ ANALYST_CONFIG = {
     },
     "michael_burry": {
         "display_name": "Michael Burry",
+        "chinese_name": "迈克尔·伯里",
         "description": "The Big Short Contrarian",
         "investing_style": "Makes contrarian bets, often shorting overvalued markets and investing in undervalued assets through deep fundamental analysis.",
         "agent_func": michael_burry_agent,
@@ -73,6 +79,7 @@ ANALYST_CONFIG = {
     },
     "mohnish_pabrai": {
         "display_name": "Mohnish Pabrai",
+        "chinese_name": "莫尼什·帕伯莱",
         "description": "The Dhandho Investor",
         "investing_style": "Focuses on value investing and long-term growth through fundamental analysis and a margin of safety.",
         "agent_func": mohnish_pabrai_agent,
@@ -81,6 +88,7 @@ ANALYST_CONFIG = {
     },
     "nassim_taleb": {
         "display_name": "Nassim Taleb",
+        "chinese_name": "纳西姆·塔勒布",
         "description": "The Black Swan Risk Analyst",
         "investing_style": "Focuses on tail risk, antifragility, and asymmetric payoffs. Uses barbell strategy, avoids fragile companies via negativa, and seeks convex positions with limited downside and unlimited upside.",
         "agent_func": nassim_taleb_agent,
@@ -89,6 +97,7 @@ ANALYST_CONFIG = {
     },
     "peter_lynch": {
         "display_name": "Peter Lynch",
+        "chinese_name": "彼得·林奇",
         "description": "The 10-Bagger Investor",
         "investing_style": "Invests in companies with understandable business models and strong growth potential using the 'buy what you know' strategy.",
         "agent_func": peter_lynch_agent,
@@ -97,6 +106,7 @@ ANALYST_CONFIG = {
     },
     "phil_fisher": {
         "display_name": "Phil Fisher",
+        "chinese_name": "菲利普·费雪",
         "description": "The Scuttlebutt Investor",
         "investing_style": "Emphasizes investing in companies with strong management and innovative products, focusing on long-term growth through scuttlebutt research.",
         "agent_func": phil_fisher_agent,
@@ -105,6 +115,7 @@ ANALYST_CONFIG = {
     },
     "rakesh_jhunjhunwala": {
         "display_name": "Rakesh Jhunjhunwala",
+        "chinese_name": "拉克什·君君瓦拉",
         "description": "The Big Bull Of India",
         "investing_style": "Leverages macroeconomic insights to invest in high-growth sectors, particularly within emerging markets and domestic opportunities.",
         "agent_func": rakesh_jhunjhunwala_agent,
@@ -113,6 +124,7 @@ ANALYST_CONFIG = {
     },
     "stanley_druckenmiller": {
         "display_name": "Stanley Druckenmiller",
+        "chinese_name": "斯坦利·德鲁肯米勒",
         "description": "The Macro Investor",
         "investing_style": "Focuses on macroeconomic trends, making large bets on currencies, commodities, and interest rates through top-down analysis.",
         "agent_func": stanley_druckenmiller_agent,
@@ -121,6 +133,7 @@ ANALYST_CONFIG = {
     },
     "warren_buffett": {
         "display_name": "Warren Buffett",
+        "chinese_name": "沃伦·巴菲特",
         "description": "The Oracle of Omaha",
         "investing_style": "Seeks companies with strong fundamentals and competitive advantages through value investing and long-term ownership.",
         "agent_func": warren_buffett_agent,
@@ -129,6 +142,7 @@ ANALYST_CONFIG = {
     },
     "technical_analyst": {
         "display_name": "Technical Analyst",
+        "chinese_name": "技术分析师",
         "description": "Chart Pattern Specialist",
         "investing_style": "Focuses on chart patterns and market trends to make investment decisions, often using technical indicators and price action analysis.",
         "agent_func": technical_analyst_agent,
@@ -137,6 +151,7 @@ ANALYST_CONFIG = {
     },
     "fundamentals_analyst": {
         "display_name": "Fundamentals Analyst",
+        "chinese_name": "基本面分析师",
         "description": "Financial Statement Specialist",
         "investing_style": "Delves into financial statements and economic indicators to assess the intrinsic value of companies through fundamental analysis.",
         "agent_func": fundamentals_analyst_agent,
@@ -145,6 +160,7 @@ ANALYST_CONFIG = {
     },
     "growth_analyst": {
         "display_name": "Growth Analyst",
+        "chinese_name": "成长分析师",
         "description": "Growth Specialist",
         "investing_style": "Analyzes growth trends and valuation to identify growth opportunities through growth analysis.",
         "agent_func": growth_analyst_agent,
@@ -153,6 +169,7 @@ ANALYST_CONFIG = {
     },
     "news_sentiment_analyst": {
         "display_name": "News Sentiment Analyst",
+        "chinese_name": "新闻情绪分析师",
         "description": "News Sentiment Specialist",
         "investing_style": "Analyzes news sentiment to predict market movements and identify opportunities through news analysis.",
         "agent_func": news_sentiment_agent,
@@ -161,6 +178,7 @@ ANALYST_CONFIG = {
     },
     "sentiment_analyst": {
         "display_name": "Sentiment Analyst",
+        "chinese_name": "市场情绪分析师",
         "description": "Market Sentiment Specialist",
         "investing_style": "Gauges market sentiment and investor behavior to predict market movements and identify opportunities through behavioral analysis.",
         "agent_func": sentiment_analyst_agent,
@@ -169,6 +187,7 @@ ANALYST_CONFIG = {
     },
     "valuation_analyst": {
         "display_name": "Valuation Analyst",
+        "chinese_name": "估值分析师",
         "description": "Company Valuation Specialist",
         "investing_style": "Specializes in determining the fair value of companies, using various valuation models and financial metrics for investment decisions.",
         "agent_func": valuation_analyst_agent,
@@ -192,6 +211,7 @@ def get_agents_list():
         {
             "key": key,
             "display_name": config["display_name"],
+            "chinese_name": config.get("chinese_name", ""),
             "description": config["description"],
             "investing_style": config["investing_style"],
             "order": config["order"]
